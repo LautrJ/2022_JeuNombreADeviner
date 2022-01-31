@@ -41,13 +41,15 @@ int tirerNombreMystere(int nbMin, int nbMax)
 // Rôle : Fait jouer une partie à un joueur
 // Paramètres d'entrée: le nombre à deviner, les limites min et max du nombre à deviner, le nombre maximal d'essais possibles
 // Paramètres de sortie: nombre d'essais utilisés par le joueur
-// Valeur de retour : 0 si la partie est perdue, 1 sinon
+// Paramètre d'entrée/sortie: Le joueur
+// Valeur de retour: 0 si la partie est perdue, 1 sinon
 
-int jouerPartie(int nb, int nbMin, int nbMax, int nbTryMax, int* nbTry)
+int jouerPartie(TPlayer *p, int nb, int nbMin, int nbMax, int nbTryMax, int* nbTry)
 {
     int endGame=0;
     int guess=0;
     int i=1;
+    int nbGame=1;
 
     while(guess!=nb && i<=nbTryMax)
     {
@@ -65,19 +67,12 @@ int jouerPartie(int nb, int nbMin, int nbMax, int nbTryMax, int* nbTry)
         else if(guess==nb)
         {
             endGame=1;
+            (*p).nbWin=(*p).nbWin+1;
         }
         i=i+1;
     }
 
+    (*p).nbGame=(*p).nbGame+1;
+
     return endGame;
 }
-
-
-
-
-
-
-
-
-
-

@@ -12,13 +12,10 @@
 /*************************************************/
 
 #include <stdio.h>
-
-
 #include "../include/JeuNombreADeviner.h"
 
 int main()
 {
-
 
     printf ("%s\n", "Vous allez jouer pour deviner un nombre secret");
 
@@ -31,9 +28,11 @@ int main()
     int endGame=0; // Resultat de la partie
     char newGame='y'; // Si le joueur veut rejouer
     int nbGame=0; // Nombre de parties jouées
-    int win=0; // Nombre de parties gagnées
+    int nbWin=0; // Nombre de parties gagnées
     int sumTry=0; // Somme du nombre d'essais à chaque partie
     float moyTry=0; // Moyenne du nombre d'essais
+
+    TPlayer player1={"Jean",nbGame,nbWin,sumTry};
 
 while(newGame=='y' || newGame=='Y')
 {
@@ -53,24 +52,24 @@ while(newGame=='y' || newGame=='Y')
 
     printf("Vous avez %d essais pour deviner le nombre secret compris entre %d et %d.\n", nbTryMax, nbMin, nbMax);
 
-    endGame = jouerPartie(nb, nbMin, nbMax, nbTryMax, &nbTry);
+    endGame = jouerPartie(&player1, nb, nbMin, nbMax, nbTryMax, &nbTry);
 
 
 // Affichage du résultat de la partie
     if (endGame==0)
     {
-        printf("\nGame Over\n");
-        printf("Meme avec %d essais tu perds.\n\n", nbTry);
+        printf("\nSah t'es nul mon reuf\n");
+        printf("Meme avec %d essais tu perds.\n", nbTry);
+        printf("Le nombre secret etait :%d\n\n",nb);
         sumTry=sumTry+nbTry;
     }
     else if(endGame==1)
     {
-        printf("\nBravo je t'applaudis.\n");
+        printf("\nBello bito.\n");
         printf("Tu as trouve le nombre secret en %d essais.\n\n", nbTry);
-        win=win+1;
+        nbWin=nbWin+1;
         sumTry=sumTry+nbTry;
     }
-    nbGame=nbGame+1;
 
 
 // Plusieurs partie
@@ -81,9 +80,8 @@ while(newGame=='y' || newGame=='Y')
 
 moyTry=(float)sumTry/nbGame;
 
-printf("Vous avez joue un total de %d parties et vous en avez gagne %d\n", nbGame, win);
+printf("Vous avez joue un total de %d parties et vous en avez gagne %d\n", nbGame, nbWin);
 printf("Nombre d'essais en moyenne par partie :%.2f", moyTry);
 
     return 0;
 }
-
