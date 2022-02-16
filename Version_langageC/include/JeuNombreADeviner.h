@@ -17,13 +17,22 @@
 
 typedef struct
 {
-
     char nom[20];
     int nbGame;
     int nbWin;
     int sumTry;
 
 } TPlayer;
+
+// Nom : TGame
+// Type : Structure
+// Rôle : enregistrer toutes les informations de chaque partie
+// Paramètres : Le joueur, les limites du nombre a deviner, le nombre d'essais max, le nombre de tentatives utilisées par le joueur, l'état de la partie
+
+typedef struct
+{
+    struct TPlayer;
+}
 
 // Nom :tirerNombreMystere
 // Rôle : Tire aléatoirement un nombre à deviner entre nbMin et nbMAx
