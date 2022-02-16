@@ -78,9 +78,9 @@ while(newGame=='y' || newGame=='Y')
     scanf("%c", &newGame);
 }
 
-moyTry=(float)sumTry/nbGame;
+moyTry=(float)sumTry/player1.nbGame;
 
-printf("Vous avez joue un total de %d parties et vous en avez gagne %d\n", nbGame, nbWin);
+printf("Vous avez joue un total de %d parties et vous en avez gagne %d\n",player1.nbGame, player1.nbWin);
 printf("Nombre d'essais en moyenne par partie :%.2f", moyTry);
 
     return 0;
